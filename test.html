@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>Test Cookies</title>
+		<script type="text/javascript">
+			function readCookies() {
+				var cookies = decodeURIComponent(document.cookie);
+				var result = "Cookies: " + cookies;
+				console.log(result);
+				document.getElementById('display').innerHTML = result;
+			}
+
+			function writeCookie() {
+				var d = new Date();
+				var expiry = new Date(d.getTime() + (1000 * 60 * 60 * 24 * 7));
+				var cookie = "value=" + encodeURIComponent(d.toUTCString()) + ";expires=" + expiry.toUTCString();
+				document.cookie = cookie;
+				console.log("Write: " + cookie);
+			}
+		</script>
+	</head>
+	<body onload="readCookies()">
+		<h1>Test Cookies</h1>
+		<p id="display">...</p>
+		<input type="button" onclick="readCookies()" value="Read">
+		<input type="button" onclick="writeCookie()" value="Write">
+	</body>
+</html>
